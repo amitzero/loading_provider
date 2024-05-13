@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:overlay_loadings/overlay_loadings.dart';
+import 'package:loading_provider/loading_provider.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,7 +10,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OverlayLoadings(
+    return LoadingProvider(
       appBuilder: (context, builder) => MaterialApp(
         home: const Home(),
         builder: builder,

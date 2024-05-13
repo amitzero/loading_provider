@@ -1,4 +1,4 @@
-library overlay_loadings;
+library loading_provider;
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -45,9 +45,9 @@ class LoadingsController with ChangeNotifier {
   LoadingConfig get config => _loadings[_current] ?? _loadings['default']!;
 }
 
-class OverlayLoadings extends StatelessWidget {
+class LoadingProvider extends StatelessWidget {
   late final LoadingsController controller;
-  OverlayLoadings(
+  LoadingProvider(
       {super.key,
       required this.appBuilder,
       Map<String, LoadingConfig>? loadings}) {
@@ -78,7 +78,7 @@ class OverlayLoadings extends StatelessWidget {
   }
 }
 
-extension OverlayLoadingsStateExtension on BuildContext {
+extension LoadingProviderStateExtension on BuildContext {
   LoadingsController get loadingController => read<LoadingsController>();
 }
 

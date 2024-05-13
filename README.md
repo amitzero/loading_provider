@@ -1,5 +1,5 @@
 ```markdown
-# overlay_loadings
+# loading_provider
 
 Amit's Flutter package for easily displaying loading overlays with customizable configurations.
 
@@ -9,7 +9,7 @@ Add the following dependency to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  overlay_loadings: ^1.0.0
+  loading_provider: ^1.0.0
 ```
 
 ## Usage
@@ -17,15 +17,15 @@ dependencies:
 1. Import the package:
 
 ```dart
-import 'package:overlay_loadings/overlay_loadings.dart';
+import 'package:loading_provider/loading_provider.dart';
 ```
 
-2. Wrap your `MaterialApp` or root widget with `OverlayLoadings`:
+2. Wrap your `MaterialApp` or root widget with `LoadingProvider`:
 
 ```dart
 void main() {
   runApp(
-    OverlayLoadings(
+    LoadingProvider(
       appBuilder: (context, child) {
         return MaterialApp(
           title: 'My App',

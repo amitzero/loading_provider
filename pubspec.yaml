@@ -1,7 +1,7 @@
-name: overlay_loadings
+name: loading_provider
 description: "Self defined overlay loadings"
 version: 0.0.1
-homepage: https://github.com/amitzero/overlay_loadings.git
+homepage: https://github.com/amitzero/loading_provider.git
 
 environment:
   sdk: '>=3.2.0 <4.0.0'

@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  overlay_loadings:
+  loading_provider:
     path: ../
 
 dev_dependencies:
