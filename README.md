@@ -1,4 +1,3 @@
-```markdown
 # loading_provider
 
 Amit's Flutter package for easily displaying loading overlays with customizable configurations.
@@ -71,7 +70,7 @@ LoadingConfig(
 
 ## Author
 
-![Amit's Picture](https://avatars.githubusercontent.com/u/66168865)
+![Amit's Picture](https://lh3.googleusercontent.com/a/ACg8ocKT7DSe8Dbf4oh1hj83szOSYWxQVxs2UAwmDQ38Xb1ERL6c7pA=s432-c-no)
 
 **GitHub:** [Amit Hasan](https://github.com/amitzero)
-```
+
