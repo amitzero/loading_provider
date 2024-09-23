@@ -1,6 +1,6 @@
 # loading_provider
 
-Amit's Flutter package for easily displaying loading overlays with customizable configurations.
+Flutter package for easily displaying loading overlays with customizable configurations.
 
 ## Installation
 
@@ -25,15 +25,31 @@ import 'package:loading_provider/loading_provider.dart';
 void main() {
   runApp(
     LoadingProvider(
-      appBuilder: (context, child) {
-        return MaterialApp(
-          title: 'My App',
-          home: MyHomePage(),
-        );
+      appBuilder: (context, builder) => MaterialApp(
+        home: const Home(),
+        builder: builder,
+      ),
+      loadings: {
+        'loading1': LoadingConfig(
+          backgroundColor: Colors.blue.withOpacity(0.5),
+          widget: const Text('Loading'),
+        ),
       },
     ),
   );
 }
+```
+
+```dart
+ElevatedButton(
+  onPressed: () async {
+    var loading = context.loadingController
+    loading.on(); // Show loading overlay
+    await Future.delayed(const Duration(seconds: 3));
+    loading.off(); // Hide loading overlay
+  },
+  child: const Text('Loading'),
+),
 ```
 
 3. Use the `LoadingBuilder` widget to show loading overlays:
@@ -50,6 +66,15 @@ LoadingBuilder(
       child: Text('Show Loading'),
     );
   },
+);
+```
+
+4. Use the `LoadingWidget` widget to show loading overlays:
+
+```dart
+LoadingWidget(
+  isLoading: true,
+  child: Text('Loading...'),
 );
 ```
 

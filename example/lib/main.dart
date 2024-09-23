@@ -17,7 +17,7 @@ class MainApp extends StatelessWidget {
       ),
       loadings: {
         'load1': LoadingConfig(
-          backgroundColor: Colors.blue.withOpacity(0.5),
+          backgroundColor: Theme.of(context).colorScheme.primaryContainer.withOpacity(0.5),
           widget: const Text('Loading'),
         ),
       },

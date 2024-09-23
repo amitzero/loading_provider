@@ -3,19 +3,16 @@ library loading_provider;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-const _defaultColor = Color(0x7E888888);
-const _deafultWidget = CircularProgressIndicator();
-
 class LoadingConfig {
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final Widget widget;
   const LoadingConfig({
-    this.backgroundColor = _defaultColor,
-    this.widget = _deafultWidget,
+    this.backgroundColor,
+    this.widget = const CircularProgressIndicator(),
   });
-  Widget build() {
+  Widget build(BuildContext context) {
     return Container(
-      color: backgroundColor,
+      color: backgroundColor ?? Theme.of(context).colorScheme.primaryContainer.withOpacity(0.3),
       alignment: Alignment.center,
       child: widget,
     );
@@ -47,15 +44,10 @@ class LoadingsController with ChangeNotifier {
 
 class LoadingProvider extends StatelessWidget {
   late final LoadingsController controller;
-  LoadingProvider(
-      {super.key,
-      required this.appBuilder,
-      Map<String, LoadingConfig>? loadings}) {
-    controller = LoadingsController(
-        (loadings ?? {})..putIfAbsent('default', () => const LoadingConfig()));
+  LoadingProvider({super.key, required this.appBuilder, Map<String, LoadingConfig>? loadings}) {
+    controller = LoadingsController((loadings ?? {})..putIfAbsent('default', () => const LoadingConfig()));
   }
-  final Widget Function(
-      BuildContext, Widget Function(BuildContext, Widget?) builder) appBuilder;
+  final Widget Function(BuildContext, Widget Function(BuildContext, Widget?) builder) appBuilder;
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +90,7 @@ class LoadingWidget extends StatelessWidget {
     return Stack(
       children: [
         if (child != null) child!,
-        if (isLoading) config.build(),
+        if (isLoading) config.build(context),
       ],
     );
   }
@@ -111,8 +103,7 @@ class LoadingBuilder extends StatefulWidget {
     required this.builder,
   });
   final LoadingConfig config;
-  final Widget Function(BuildContext context, void Function(bool) setLoading)
-      builder;
+  final Widget Function(BuildContext context, void Function(bool) setLoading) builder;
 
   @override
   State<LoadingBuilder> createState() => _LoadingBuilderState();
@@ -122,9 +113,11 @@ class _LoadingBuilderState extends State<LoadingBuilder> {
   bool isLoading = false;
 
   void setLoading(bool isLoading) {
-    setState(() {
-      this.isLoading = isLoading;
-    });
+    if (mounted) {
+      setState(() {
+        this.isLoading = isLoading;
+      });
+    }
   }
 
   @override
