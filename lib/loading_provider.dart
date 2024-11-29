@@ -37,6 +37,15 @@ class LoadingsController with ChangeNotifier {
     notifyListeners();
   }
 
+  Future<dynamic> load(Future<dynamic> Function() func) {
+    on();
+    try {
+      return func();
+    } finally {
+      off();
+    }
+  }
+
   bool get hasLoading => _loading;
 
   LoadingConfig get config => _loadings[_current] ?? _loadings['default']!;

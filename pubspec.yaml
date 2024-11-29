@@ -1,6 +1,6 @@
 name: loading_provider
 description: "Self defined overlay loadings"
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/amitzero/loading_provider.git
 
 environment:
