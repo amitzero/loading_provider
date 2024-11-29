@@ -3,6 +3,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.6] - 2024-11-29
+- Bug fix
+
+## [0.0.5] - 2024-11-29
+- `resolve` function added to resolve a future
+
 ## [0.0.4] - 2024-09-24
 - Bug Fixes
 

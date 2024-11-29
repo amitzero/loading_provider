@@ -37,10 +37,11 @@ class LoadingsController with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<dynamic> load(Future<dynamic> Function() func) {
+  Future<dynamic> resolve(Future<dynamic> Function() func) async {
     on();
     try {
-      return func();
+      var result = await func();
+      return result;
     } finally {
       off();
     }
