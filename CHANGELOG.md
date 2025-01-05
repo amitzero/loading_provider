@@ -3,7 +3,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.0.7] - 2024-11-29
+## [0.0.9] - 2025-01-05
+- Documentation improvement
+
+## [0.0.8] - 2025-01-05
+- Documentation improvement
+
+## [0.0.7] - 2025-01-05
 - Documentation improvement
 
 ## [0.0.6] - 2024-11-29
