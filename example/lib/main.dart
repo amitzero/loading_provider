@@ -5,7 +5,9 @@ void main() {
   runApp(const MainApp());
 }
 
+/// The main application widget.
 class MainApp extends StatelessWidget {
+  /// Creates a [MainApp] widget.
   const MainApp({super.key});
 
   @override
@@ -17,7 +19,10 @@ class MainApp extends StatelessWidget {
       ),
       loadings: {
         'load1': LoadingConfig(
-          backgroundColor: Theme.of(context).colorScheme.primaryContainer.withValues(alpha: 0.5),
+          backgroundColor: Theme.of(context)
+              .colorScheme
+              .primaryContainer
+              .withValues(alpha: 0.5),
           widget: const Text('Loading'),
         ),
       },
@@ -25,7 +30,9 @@ class MainApp extends StatelessWidget {
   }
 }
 
+/// The main home widget of the app.
 class Home extends StatelessWidget {
+  /// Creates a [Home] widget.
   const Home({
     super.key,
   });
