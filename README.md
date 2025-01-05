@@ -2,17 +2,6 @@
 
 Flutter package for easily displaying loading overlays with customizable configurations.
 
-## Installation
-
-Add the following dependency to your `pubspec.yaml` file:
-
-```yaml
-dependencies:
-  loading_provider: ^1.0.0
-```
-
-## Usage
-
 1. Import the package:
 
 ```dart
@@ -29,11 +18,12 @@ void main() {
         home: const Home(),
         builder: builder,
       ),
-      loadings: {
+      loadings: {  // Provide loading configurations with name to use later to show different loadings.
         'loading1': LoadingConfig(
           backgroundColor: Colors.blue.withOpacity(0.5),
           widget: const Text('Loading'),
         ),
+        // add other loadings
       },
     ),
   );
@@ -44,7 +34,10 @@ void main() {
 ElevatedButton(
   onPressed: () async {
     var loading = context.loadingController
-    loading.on(); // Show loading overlay
+    loading.on(); // Show loading overlay. It will use default loading
+    await Future.delayed(const Duration(seconds: 3));
+    loading.off(); // Hide loading overlay
+    loading.on('loading1');  // with name to use specific loading provided in [LoadingProvider]
     await Future.delayed(const Duration(seconds: 3));
     loading.off(); // Hide loading overlay
   },
@@ -56,6 +49,7 @@ ElevatedButton(
 
 ```dart
 LoadingBuilder(
+  config: const LoadingConfig(), // Optional or it will used default loading
   builder: (context, setLoading) {
     return ElevatedButton(
       onPressed: () async {
@@ -74,6 +68,7 @@ LoadingBuilder(
 ```dart
 LoadingWidget(
   isLoading: true,
+  config: const LoadingConfig(), // Optional or it will used default loading
   child: Text('Loading...'),
 );
 ```
@@ -84,7 +79,7 @@ You can customize the loading overlay by providing a `LoadingConfig` object with
 
 ```dart
 LoadingConfig(
-  backgroundColor: Colors.blue.withOpacity(0.5),
+  backgroundColor: Colors.blue.withValues(alpha: 0.5),
   widget: CircularProgressIndicator(
     valueColor: AlwaysStoppedAnimation(Colors.white),
   ),
